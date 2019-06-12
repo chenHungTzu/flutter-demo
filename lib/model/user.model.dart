@@ -1,10 +1,9 @@
 class User {
-   String Name;
-   String Id;
+  String Name;
+  String Id;
 
-  User([String Name = "" , String ID = ""]){
+  User([String Name = "", String ID = ""]) {
     this.Name = Name;
     this.Id = ID;
-
   }
 }
