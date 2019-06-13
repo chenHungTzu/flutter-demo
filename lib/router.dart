@@ -16,7 +16,11 @@ final initialRoute = '/';
  * 定義Router
  */
 final routes = {
+
+  // 預設登入頁面
   '/': (context) => getInjectRouter(LoginPage(title: '登入')),
+
+  // 首頁
   '/home': (context) => getInjectRouter(HomePage(title: '首頁'))
 };
 

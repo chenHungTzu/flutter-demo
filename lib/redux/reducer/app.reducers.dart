@@ -1,21 +1,23 @@
-import 'package:flutter_app/model/user.model.dart';
-import 'package:flutter_app/redux/reducer/user.reducers.dart';
-import 'package:flutter_app/redux/reducer/counter.reducers.dart';
+import 'package:flutter_app/model/auth.model.dart';
+
+import 'auth.reducers.dart' as fromAuthReducer;
+
 
 class AppState {
-  CounterState counterState;
-  UserState userState;
 
-  AppState(this.counterState, this.userState);
+  fromAuthReducer.AuthState authState;
+
+  AppState(this.authState);
 
   AppState.initialState() {
-    this.counterState = new CounterState(0);
-    this.userState = new UserState(new User());
+
+    this.authState = new fromAuthReducer.AuthState(new User(
+      account:  '',
+      password: '',
+    ));
   }
 }
 
 AppState appStateReducer(AppState state, action) {
-  return AppState(
-      fromCounterReducer(state.counterState, action),
-      fromUserReducer(state.userState, action));
+  return AppState(fromAuthReducer.redeucer(state.authState, action));
 }

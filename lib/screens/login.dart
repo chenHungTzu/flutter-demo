@@ -3,7 +3,7 @@ import 'package:dependencies_flutter/dependencies_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/redux/reducer/app.reducers.dart';
-import 'package:flutter_app/redux/thunk/user.thunk.dart';
+import 'package:flutter_app/redux/thunk/auth.thunk.dart';
 import 'package:flutter_app/scoped/app.model.dart';
 import 'package:flutter_app/services/user.service.dart';
 import 'package:flutter_app/style/theme.dart' as Theme;
@@ -75,9 +75,9 @@ class LoginPageState extends State<LoginPage>
   @override
   Widget buildWithInjector(BuildContext context, Injector injector) {
 
-    final store = Singleton.instance.store;
-    final app = AppModel().of(context);
-    final service = injector.get<UserService>();
+    // final store = Singleton.instance.store;
+    // final app = AppModel().of(context);
+    // final service = injector.get<UserService>();
 
     return Scaffold(
       body: NotificationListener<OverscrollIndicatorNotification>(
@@ -335,8 +335,8 @@ class LoginPageState extends State<LoginPage>
                       ),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/home');
-                      //Singleton.instance.store.dispatch(userLoginThunk(context));
+
+                      Singleton.instance.store.dispatch(LoginThunk(context));
                     }),
               ),
             ],
